@@ -9,7 +9,13 @@ initdb.get('/', async(req, res) => {
     // Anlegen der Tabelle futureTrips
     let query = `
             DROP TABLE IF EXISTS futureTrips;
-            CREATE TABLE futureTrips(id serial PRIMARY KEY, country VARCHAR(130) NOT NULL, city VARCHAR(130) NOT NULL, season VARCHAR(50),sightseeing VARCHAR(500), budget DECIMAL(7,2), notes VARCHAR(500));
+            CREATE TABLE futureTrips(id serial PRIMARY KEY, 
+                country VARCHAR(130) NOT NULL, 
+                city VARCHAR(130) NOT NULL, 
+                season VARCHAR(50),
+                sightseeing VARCHAR(500),
+                budget DECIMAL(7,2), 
+                notes VARCHAR(500));
             `;
 
     try {
