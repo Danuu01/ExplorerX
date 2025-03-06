@@ -14,8 +14,8 @@ initdb.get('/', async(req, res) => {
                 city VARCHAR(130) NOT NULL, 
                 season VARCHAR(50),
                 sightseeing VARCHAR(500),
-                budget DECIMAL(7,2), 
-                notes VARCHAR(500));
+                 budget DECIMAL(7,2), 
+                 notes VARCHAR(500));
             `;
 
     try {
