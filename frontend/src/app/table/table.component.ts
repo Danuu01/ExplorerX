@@ -1,10 +1,11 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { BackendService } from '../shared/backend.service';
 import { Futuretrip } from '../shared/futuretrip';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-table',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css'
 })
@@ -35,5 +36,7 @@ export class TableComponent implements OnInit{
       }
     })
   }
-
+  delete(id: number): void {
+    console.log(`Vocabulary with id=${id} deleted`);
+  }
 }

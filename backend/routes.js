@@ -10,7 +10,27 @@ router.get('/', async(req, res) => {
 
 
 
-module.exports = router;
+
+// get one vocabulary with id
+router.get('/futureTrips/:id', async(req, res) => {
+    const query = `SELECT * FROM futureTrips WHERE id=$1`;
+
+    try {
+        const id = req.params.id;
+        const result = await client.query(query, [id])
+        console.log(result)
+        if (result.rowCount == 1)
+            res.send(result.rows[0]);
+        else {
+            res.status(404)
+            res.send({ message: "No futuretrip found with id=" + id });
+        }
+    } catch (err) {
+        console.log(err.stack)
+    }
+});
+
+
 
 
 // update one futureTrips
@@ -94,4 +114,8 @@ router.post('/futureTrips', async(req, res) => {
     } catch (err) {
         console.log(err.stack)
     }
+
 });
+
+module.exports = router;
+

@@ -18,6 +18,11 @@ export const routes: Routes = [{
     component: CreateComponent
   },
   {
-    path: "member/:id",
+    path: "futuretrip/:id",
     component: DetailComponent
-  }];
+
+  },
+      { path: 'futuretrip/:id', component: DetailComponent }
+  
+    
+  ];

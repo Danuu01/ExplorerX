@@ -1,1 +1,61 @@
-<p>detail works!</p>
+<main class="d-flex min-vh-100">
+    <fieldset class="container mt-5">
+      
+      @if(futuretrip) {
+        <legend class="mb-4">Reise nach {{ futuretrip.country }}, {{ futuretrip.city }} aktualisieren</legend>
+      } @else {
+        <legend class="mb-4">Neue Reise hinzufügen</legend>
+      }
+      
+      <form [formGroup]="form" (ngSubmit)="update()">
+        <div class="mb-3 row">
+          <label class="col-2 col-form-label" for="country">Land</label>
+          <div class="col-10">
+            <input type="text" class="form-control" id="country" placeholder="Land" formControlName="countryControl" />
+          </div>
+        </div>
+        
+        <div class="mb-3 row">
+          <label class="col-2 col-form-label" for="city">Stadt</label>
+          <div class="col-10">
+            <input type="text" class="form-control" id="city" placeholder="Stadt" formControlName="cityControl" />
+          </div>
+        </div>
+        
+        <div class="mb-3 row">
+          <label class="col-2 col-form-label" for="season">Saison</label>
+          <div class="col-10">
+            <input type="text" class="form-control" id="season" placeholder="Saison (z.B. Sommer, Winter)" formControlName="seasonControl" />
+          </div>
+        </div>
+        
+        <div class="mb-3 row">
+          <label class="col-2 col-form-label" for="sightseeing">Sehenswürdigkeiten</label>
+          <div class="col-10">
+            <textarea class="form-control" id="sightseeing" placeholder="Sehenswürdigkeiten" formControlName="sightseeingControl"></textarea>
+          </div>
+        </div>
+        
+        <div class="mb-3 row">
+          <label class="col-2 col-form-label" for="budget">Budget (€)</label>
+          <div class="col-10">
+            <input type="number" step="0.01" class="form-control" id="budget" placeholder="Budget" formControlName="budgetControl" />
+          </div>
+        </div>
+        
+        <div class="mb-3 row">
+          <label class="col-2 col-form-label" for="notes">Notizen</label>
+          <div class="col-10">
+            <textarea class="form-control" id="notes" placeholder="Notizen" formControlName="notesControl"></textarea>
+          </div>
+        </div>
+        
+        <div class="row gx-0 mt-5">
+          <button type="submit" class="col-5 btn btn-primary">aktualisieren</button>
+          <div class="col-2"></div>
+          <button type="button" class="col-5 btn btn-secondary" (click)="cancel()">Abbrechen</button>
+        </div>
+      </form>
+    </fieldset>
+</main>
+

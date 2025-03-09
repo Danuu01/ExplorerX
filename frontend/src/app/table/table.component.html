@@ -1,1 +1,36 @@
-<p>table works!</p>
+<div class="container m-5">
+    <h1>Alle geplanten Reisen</h1>
+
+    <table class="table table-striped table-responsive mt-5">
+        <caption>Alle zukünftigen Reisen</caption>
+        <thead>
+            <tr>
+                <th scope="col">Nr</th>
+                <th scope="col">Land</th>
+                <th scope="col">Stadt</th>
+                <th scope="col">Saison</th>
+                <th scope="col">Sehenswürdigkeiten</th>
+                <th scope="col">Budget</th>
+                <th scope="col">Notizen</th>
+                <th scope="col">Details</th>
+                <th scope="col">Löschen</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (trip of futuretripList; track $index; let i = $index) {
+                <tr>
+                    <td>{{ i+1 }}</td>
+                    <td>{{ trip.country }}</td>
+                    <td>{{ trip.city }}</td>
+                    <td>{{ trip.season }}</td>
+                    <td>{{ trip.sightseeing }}</td>
+                    <td>{{ trip.budget}}</td>
+                    <td>{{ trip.notes }}</td>
+                    <td><a [routerLink]="['/futuretrip', trip.id ]"><span class="bi bi-pencil-square"></span></a></td>
+                    <td><i (click)="delete(trip.id)" class="bi bi-trash"></i></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
