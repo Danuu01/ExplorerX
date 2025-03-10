@@ -23,7 +23,7 @@ router.get('/futureTrips/:id', async(req, res) => {
             res.send(result.rows[0]);
         else {
             res.status(404)
-            res.send({ message: "No futuretrip found with id=" + id });
+            res.send({ message: "No futuretr found with id=" + id });
         }
     } catch (err) {
         console.log(err.stack)

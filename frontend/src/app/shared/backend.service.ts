@@ -8,6 +8,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class BackendService {
+  getAll() {
+    throw new Error('Method not implemented.');
+  }
   
   backendUrl = 'http://localhost:4000'; 
   apiURL: string | undefined;
