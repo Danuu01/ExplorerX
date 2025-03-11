@@ -1,1 +1,77 @@
-<p>create works!</p>
+<main class="d-flex justify-content-center min-vh-100">
+    <fieldset class="container mt-5 p-4">
+      <legend class="mb-4 text-center">Neuen Eintrag erstellen</legend>
+      <form [formGroup]="form" (ngSubmit)="confirm()">
+        
+        <div class="mb-3">
+          <label class="form-label" for="country">country</label>
+          <input type="text" class="form-control" id="country" placeholder="Bitte geben Sie das countryische Wort in Hangul ein" formControlName="countryControl"
+              [ngClass]="{'is-invalid': form.get('countryControl')?.invalid && form.get('countryControl')?.touched}" />
+              <div *ngIf="form.get('countryControl')?.invalid && form.get('countryControl')?.touched" class="invalid-feedback">
+              Bitte geben Sie das countryische Wort ein.
+          </div>      
+      </div>
+  
+        <div class="mb-3">
+          <label class="form-label" for="season">season</label>
+          <input type="text" class="form-control" id="season" placeholder="Aussprache des countryischen Wortes" formControlName="seasonControl">  
+      </div>
+  
+        <div class="mb-3">
+          <label class="form-label" for="city">city</label>
+          <input type="text" class="form-control" id="city" placeholder="Englische Übersetzung" formControlName="cityControl"
+          [ngClass]="{'is-invalid': form.get('cityControl')?.invalid && form.get('cityControl')?.touched}" />
+          <div *ngIf="form.get('cityControl')?.invalid && form.get('cityControl')?.touched" class="invalid-feedback">
+              Bitte geben Sie die englische Übersetzung ein.
+          </div>    
+        </div>
+  
+        <div class="mb-3">
+          <label class="form-label" for="sightseeing">sightseeing</label>
+          <input type="text" class="form-control" id="sightseeing" placeholder="Beispiel im Gebrauch" formControlName="sightseeingControl" />
+        </div>
+  
+        <div class="mb-3">
+          <label class="form-label" for="notes">notes</label>
+          <input type="text" class="form-control" id="notes" placeholder="Bedeutung des countryischen Wortes" formControlName="notesControl" />
+        </div>
+  
+      <div class="mb-3">
+          
+          <label class="form-label" for="budget">budget</label>
+          <input type="text" class="form-control" id="budget" placeholder="Bedeutung des countryischen Wortes" formControlName="budgetControl" />
+        </div>
+    
+        <div class="d-flex justify-content-between mt-5">
+          <button type="submit" class="btn btn-secondary col-5">Create</button>
+          <button type="button" class="btn btn-secondary col-5" (click)="cancel()">Quit</button>
+        </div>
+      </form>
+    </fieldset>
+  </main>
+  
+  
+ 
+  <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+      <div class="modal-dialog"> 
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="confirmationModalLabel">Confirm Changes</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p><strong>country:</strong> {{modalValues.country || ''}}</p>
+            <p><strong>season:</strong> {{modalValues.season || ''}}</p>
+            <p><strong>city:</strong> {{modalValues.city || ''}}</p>
+            <p><strong>sightseeing:</strong> {{modalValues.sightseeing || ''}}</p>
+            <p><strong>notes:</strong> {{modalValues.notes || ''}}</p>
+            <p><strong>budget:</strong> {{modalValues.budget || ''}}</p>
+            <p>Are you sure you want to save these changes?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" id="confirmButton">Add to Vocablist</button>
+          </div>
+        </div>
+      </div> 
+  </div>

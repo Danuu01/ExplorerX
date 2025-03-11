@@ -8,13 +8,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class BackendService {
-  getAll() {
-    throw new Error('Method not implemented.');
-  }
-  
   backendUrl = 'http://localhost:4000'; 
-  apiURL: string | undefined;
-
+  
   constructor(private http: HttpClient) { } 
 
 
@@ -45,6 +40,11 @@ export class BackendService {
     const url = `${this.backendUrl}/futureTrips/${id}`;
     return this.http.delete<void>(url);
   }
+
+  create(futuretrip:Futuretrip):Observable<Futuretrip>{
+    return this.http.post<Futuretrip>(this.backendUrl + "/futureTrips",futuretrip);
+  }
+  
 
   
 }

@@ -8,10 +8,6 @@ router.get('/', async(req, res) => {
     res.send({ message: "Hello FIW!" });
 });
 
-
-
-
-// get one vocabulary with id
 router.get('/futureTrips/:id', async(req, res) => {
     const query = `SELECT * FROM futureTrips WHERE id=$1`;
 
